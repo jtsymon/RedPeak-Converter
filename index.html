@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB" lang="en-GB">
+    <head>
+        <meta charset="UTF-8">
+        <title>much flag</title>
+        <style>
+img {
+    margin: 10px;
+    vertical-align: middle;
+}
+        </style>
+        <script type="text/javascript">
+function convert(text) {
+    text = text.toUpperCase();
+    var root = document.getElementById("root");
+    root.innerHTML = "";
+    for (var i = 0, n = text.length; i < n; i++) {
+        var c = text[i];
+        if (c === ' ') {
+            root.innerHTML += '<br>';
+        } else {
+            var img = window.characters[c];
+            if (!img) {
+                alert("Invalid character '" + c +"'");
+                return;
+            }
+            root.appendChild(img.cloneNode());
+        }
+    }
+}
+window.onload = function() {
+    window.characters = [];
+    window.waiting_for = 26;
+    for (var i = 0; i < 26; i++) {
+        var c = String.fromCharCode(65 + i);
+        window.characters[c] = new Image();
+        window.characters[c].onload = function() {
+            window.waiting_for --;
+        }
+        window.characters[c].src = c + ".png";
+    }
+}
+        </script>
+    </head>
+    <body style="background: #aeaeae">
+        <form onsubmit="convert(document.getElementById('txt').value); return false">
+            <input id="txt"></input>
+            <input type="submit" value="Convert"></input>
+        </form>
+        <div id="root"/>
+    </body>
+</html>
