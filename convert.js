@@ -69,6 +69,6 @@ function tweet() {
 function showImage() {
     html2canvas(document.getElementById("root")).then(function(canvas) {
         var dataUrl = canvas.toDataURL();
-        window.open(dataUrl);
+        window.location = dataUrl;
     });
 }
