@@ -1,23 +1,30 @@
 function convert(text) {
     text = text.toUpperCase().replace(/[^A-Z ]/gi, '');
-    
+
     var root = document.getElementById("root");
     var inner = document.createElement("div");
     // Clear the DOM element faster
     while (root.firstChild) {
         root.removeChild(root.firstChild);
     }
+
+    var wrap = document.createElement("div");
+    wrap.className = "wrapper";
+    inner.appendChild(wrap);
+
     for (var i = 0, n = text.length; i < n; i++) {
         var c = text[i];
         if (c === ' ') {
-            inner.innerHTML += '<br>';
+            wrap = document.createElement("div");
+            wrap.className = "wrapper";
+            inner.appendChild(wrap);
         } else {
             var img = window.characters[c];
             if (!img) {
                 alert("Invalid character '" + c +"'");
                 return;
             }
-            inner.appendChild(img.cloneNode());
+            wrap.appendChild(img.cloneNode());
         }
     }
     window.location.hash = text;
