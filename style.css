@@ -1,7 +1,7 @@
 body {
     margin: 10px;
     
-    font-family: Source Sans Pro;
+    font-family: Source Sans Pro, sans-serif;
     font-size: 16px;
 
     background: #232A3E;
@@ -12,7 +12,7 @@ input, button {
 }
 
 a {
-    color: inherit;
+    color: #6d7aaf;
     text-decoration: none;
 }
 
@@ -35,7 +35,7 @@ a:hover {
     font-size: 0.9em;
     text-align: center;
     
-    color: #8d92a5;
+    color: #8892a3;
 }
 
 .footer span {
