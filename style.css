@@ -82,6 +82,8 @@ a:hover {
     padding: 14px 16px;
     margin: 0;
     
+    font-size: 1em;
+    
     border: none;
     border-radius: 4px;
 }
@@ -90,7 +92,7 @@ a:hover {
     display: inline-block;
     vertical-align: middle;
     
-    font-size: 1em;
+    
     text-transform: uppercase;
     text-align: center;
     
@@ -156,42 +158,42 @@ a:hover {
  Kerning letters
 */
 
-.L,
-.K {
+.result .L,
+.result .K {
     margin-left: -0.5em;
 }
 
-.H,
-.E,
-.U,
-.F {
+.result .H,
+.result .E,
+.result .U,
+.result .F {
     margin-left: -0.3em;
 }
 
-.F {
+.result .F {
     margin-right: 0em;
 }
 
-.H,
-.G,
-.U {
+.result .H,
+.result .G,
+.result .U {
     margin-right: -0.3em;
 }
 
-.T {
+.result .T {
     margin-left: -0.2em;
     margin-right: -0.2em;
 }
 
-.R,
-.P {
+.result .R,
+.result .P {
     margin-left: -0.2em;
 }
 
-.A,
-.V,
-.I,
-.Z {
+.result .A,
+.result .V,
+.result .I,
+.result .Z {
     margin-left: -0em;
     margin-right: -0em;
 }
