@@ -4,14 +4,6 @@ body {
     font-size: 16px;
 }
 
-img {
-    max-width: 40px;
-    max-height: 40px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
 .main {
     width: 80%;
     margin-left: auto;
@@ -58,7 +50,27 @@ input[type="submit"] {
     color: white;
 }
 
+.wrapper {
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    height: 2.5em;
+
+    line-height: 2.5em;
+}
+
+img {
+    max-width: 2.5em;
+    max-height: 2.5em;
+    margin-left: 0.3em;
+    vertical-align: middle;
+}
+
 @media screen and (min-width: 620px) {
+  body {
+      font-size: 24px;
+  }
+
   input:not([type]),
   input[type="text"] {
       width: 80%;
@@ -66,10 +78,5 @@ input[type="submit"] {
 
   input[type="submit"] {
       width: 20%;
-  }
-
-  img {
-      max-width: 64px;
-      max-height: 64px;
   }
 }
