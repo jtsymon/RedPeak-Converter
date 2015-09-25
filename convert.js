@@ -42,6 +42,7 @@ window.onload = function() {
             window.waiting_for --;
         }
         window.characters[c].src = "img/" + c + ".png";
+        window.characters[c].className = c;
     }
     fromhash();
 }
