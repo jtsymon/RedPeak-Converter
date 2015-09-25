@@ -7,14 +7,23 @@
         <link rel="icon" type="image/png" href="favicon.png"/>
         <link rel="stylesheet" href="style.css"/>
         <script src="convert.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha2/html2canvas.min.js"></script>
     </head>
     <body>
-        <div class="main">
+        <main class="main">
             <form onsubmit="convert(document.getElementById('txt').value); return false">
-                <input id="txt" placeholder="Enter text to Red-Peak-ify">
-                <input type="submit" value="Convert">
+                <input class="text mainText" id="txt" placeholder="Enter text to Red-Peak-ify">
+                <input class="button convert" type="submit" value="Convert">
             </form>
-            <div id="root" class="content"></div>
-        </div>
+			
+			<div class="content">
+				<div id="root" class="result"></div>
+
+				<div class="extras">
+					<button class="button" onclick="showImage()">Savable Image</button>
+                    <button class="button" onclick="tweet()">Tweet</button>
+				</div>
+			</div>
+        </main>
     </body>
 </html>

@@ -32,6 +32,7 @@ function convert(text) {
     // Append to root only once
     root.appendChild(inner);
 }
+
 window.onload = function() {
     window.characters = [];
     window.waiting_for = 26;
@@ -57,4 +58,17 @@ function fromhash() {
         convert(hash);
         document.getElementById("txt").value = hash;
     }
+}
+
+function tweet() {
+    window.open(
+        "https://twitter.com/intent/tweet?hashtags=RedPeak&url=" +
+        encodeURIComponent(window.location));
+}
+
+function showImage() {
+    html2canvas(document.getElementById("root")).then(function(canvas) {
+        var dataUrl = canvas.toDataURL();
+        window.open(dataUrl);
+    });
 }
