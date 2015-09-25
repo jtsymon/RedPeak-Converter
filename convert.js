@@ -19,6 +19,7 @@ function convert(text) {
             inner.appendChild(img.cloneNode());
         }
     }
+    window.location.hash = text;
     // Append to root only once
     root.appendChild(inner);
 }
