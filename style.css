@@ -1,11 +1,12 @@
 body {
     background: #232A3E;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .main {
-    width: 80%;
+    width: 95%;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -18,8 +19,8 @@ body {
     float: left;
 
     border-radius: 2px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    background-color: #aeaeae;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+    background-color: #2D344E;
 }
 
 input {
@@ -55,6 +56,7 @@ input[type="submit"] {
     margin-right: 2em;
     margin-bottom: 1em;
     height: 2.5em;
+    overflow-y: hidden;
 
     line-height: 2.5em;
 }
@@ -66,9 +68,19 @@ img {
     vertical-align: middle;
 }
 
+@media screen and (min-width: 320px) {
+  body {
+      font-size: 16px;
+  }
+}
+
 @media screen and (min-width: 620px) {
   body {
       font-size: 24px;
+  }
+
+  .main {
+    width: 80%;
   }
 
   input:not([type]),
