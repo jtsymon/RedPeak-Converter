@@ -1,5 +1,5 @@
 function convert(text) {
-    text = text.toUpperCase().replace(/[^A-Z]/gi, '');
+    text = text.toUpperCase().replace(/[^A-Z\s]/gi, '');
     
     var root = document.getElementById("root");
     var inner = document.createElement("div");
