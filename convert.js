@@ -27,7 +27,7 @@ function convert(text) {
             wrap.appendChild(img.cloneNode());
         }
     }
-    window.location.hash = text;
+    window.location.hash = text.replace(/[ ]/gi, '-');
     document.getElementById("txt").value = text;
     // Append to root only once
     root.appendChild(inner);
@@ -51,6 +51,7 @@ window.onhashchange = fromhash;
 function fromhash() {
     //Get text from hash in URL
     var hash = window.location.hash.substring(1);
+    hash = hash.replace(/[-]/gi, ' ');
     if(hash!=null){
         convert(hash);
         document.getElementById("txt").value = hash;
