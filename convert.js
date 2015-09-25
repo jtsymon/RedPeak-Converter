@@ -1,5 +1,6 @@
 function convert(text) {
-    text = text.toUpperCase();
+    text = text.toUpperCase().replace(/[^A-Z]/gi, '');
+    
     var root = document.getElementById("root");
     var inner = document.createElement("div");
     // Clear the DOM element faster
@@ -20,6 +21,7 @@ function convert(text) {
         }
     }
     window.location.hash = text;
+    document.getElementById("txt").value = text;
     // Append to root only once
     root.appendChild(inner);
 }
