@@ -33,4 +33,16 @@ window.onload = function() {
         }
         window.characters[c].src = "img/" + c + ".png";
     }
+    fromhash();
+}
+
+window.onhashchange = fromhash;
+
+function fromhash() {
+    //Get text from hash in URL
+    var hash = window.location.hash.substring(1);
+    if(hash!=null){
+        convert(hash);
+        document.getElementById("txt").value = hash;
+    }
 }
