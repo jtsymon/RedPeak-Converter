@@ -17,6 +17,7 @@ body {
     padding: 20px;
     margin-top: 20px;
     float: left;
+    overflow-x: scroll;
 
     border-radius: 2px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.22);
@@ -59,6 +60,7 @@ input[type="submit"] {
     overflow-y: hidden;
 
     line-height: 2.5em;
+    white-space: nowrap;
 }
 
 img {
