@@ -1,20 +1,26 @@
 function convert(text) {
     text = text.toUpperCase();
     var root = document.getElementById("root");
-    root.innerHTML = "";
+    var inner = document.createElement("div");
+    // Clear the DOM element faster
+    while (root.firstChild) {
+        root.removeChild(root.firstChild);
+    }
     for (var i = 0, n = text.length; i < n; i++) {
         var c = text[i];
         if (c === ' ') {
-            root.innerHTML += '<br>';
+            inner.innerHTML += '<br>';
         } else {
             var img = window.characters[c];
             if (!img) {
                 alert("Invalid character '" + c +"'");
                 return;
             }
-            root.appendChild(img.cloneNode());
+            inner.appendChild(img.cloneNode());
         }
     }
+    // Append to root only once
+    root.appendChild(inner);
 }
 window.onload = function() {
     window.characters = [];
