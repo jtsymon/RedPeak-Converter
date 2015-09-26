@@ -123,7 +123,7 @@ function uploadImage(onSuccess) {
                     var response = JSON.parse(xhr.responseText);
                    
                     if (response.success) {
-                        onSuccess(response.data.link);
+                        onSuccess("http://imgur.com/" + response.data.id);
                     }
                 }
                 else {
