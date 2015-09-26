@@ -3,6 +3,9 @@ function convert(text) {
 
     var root = document.getElementById("root");
     var inner = document.createElement("div");
+    inner.id = "innerResult";
+    inner.className = "innerResult";
+    
     // Clear the DOM element faster
     while (root.firstChild) {
         root.removeChild(root.firstChild);
@@ -34,6 +37,13 @@ function convert(text) {
 }
 
 window.onload = function() {
+    document.getElementById("tweetImageButton").addEventListener("click", function(e) {
+        generateTwitterImage(e.target);
+    });
+    
+    document.getElementById("tweetLinkButton").addEventListener("click", tweetLink);
+    document.getElementById("imageButton").addEventListener("click", showImage);
+    
     window.characters = [];
     window.waiting_for = 26;
     for (var i = 0; i < 26; i++) {
@@ -60,15 +70,87 @@ function fromhash() {
     }
 }
 
-function tweet() {
+function tweetLink() {
     window.open(
         "https://twitter.com/intent/tweet?hashtags=RedPeak&url=" +
         encodeURIComponent(window.location));
 }
 
+function generateImage(callback) {
+    var result = document.getElementById("innerResult");
+    
+    // Have to resize the page body to get the full width of the image
+    if (document.body.offsetWidth < result.offsetWidth) {
+        document.body.style.width = result.offsetWidth + "px";
+    }
+    
+    html2canvas(result).then(function() {
+        html2canvas(result).then(function(canvas) {
+            document.body.style.width = "";
+            var dataUrl = canvas.toDataURL();
+            
+            if (callback) {
+                callback(dataUrl);
+            }
+        });
+    });
+}
+
 function showImage() {
-    html2canvas(document.getElementById("root")).then(function(canvas) {
-        var dataUrl = canvas.toDataURL();
-        window.location = dataUrl;
+    generateImage(function(url) {
+        window.location = url;
+    });
+}
+
+var isUploading = false;
+
+function uploadImage(onSuccess) {
+    if (isUploading) {
+        return;
+    }
+    
+    isUploading = true;
+    
+    generateImage(function(url) {
+        var img = url.split(',')[1];
+        
+        var xhr = new XMLHttpRequest();
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                isUploading = false;
+                if(xhr.status == 200 && onSuccess){
+                    var response = JSON.parse(xhr.responseText);
+                   
+                    if (response.success) {
+                        onSuccess(response.data.link);
+                    }
+                }
+                else {
+                    alert('something went wrong')
+                }
+            }
+        }
+        
+        var imgururl = "https://api.imgur.com/3/image";
+        var params = "image=" + 
+
+        xhr.open("POST", imgururl, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.setRequestHeader("Authorization", "Client-ID ed2cb862c8bffdf");
+        xhr.send(JSON.stringify({image:img}));
+    });
+}
+
+function generateTwitterImage(button) {
+    button.classList.add("loading");
+    button.innerHTML = "Loading...";
+
+    uploadImage(function(url) {
+        button.classList.remove("loading");
+        button.innerHTML = "Done!";
+        window.location = 
+        "https://twitter.com/intent/tweet?hashtags=RedPeak&url=" +
+        encodeURIComponent(url)
     });
 }

@@ -47,6 +47,11 @@ a:hover {
     padding-top: 10px;
 }
 
+.result,
+.innerResult {
+    background-color: #2D344E;
+}
+
 .result {
     box-sizing: border-box;
     width: 100%;
@@ -57,7 +62,11 @@ a:hover {
     font-size: 12px;
 
     box-shadow: 0 2px 6px rgba(0,0,0,0.22);
-    background-color: #2D344E;
+}
+
+.innerResult {
+    float: left;
+    padding: 10px;
 }
 
 .extras {
@@ -99,6 +108,8 @@ a:hover {
     color: #f8f8f8;
     cursor: pointer;
     background: #37495f;
+    
+    transition: padding 0.2s;
 }
 
 .button:hover {
@@ -107,6 +118,56 @@ a:hover {
 
 .button.left {
     border-radius: 4px 0 0 4px;
+}
+
+.button.loading {
+    padding-right: 50px;
+    position: relative;
+}
+
+.loading:before, .loading:after {
+	content: '';
+  	display: block;
+	box-sizing: border-box;
+	position: absolute;
+		
+	border-radius: 100%;
+	border-width: 2px;
+	border-style: solid;
+}
+
+.loading:before {
+	width: 26px;
+	height: 26px;
+    top: calc(50% - 13px);
+	right: 12px;
+	
+	border-color: #66adc3 transparent;
+	animation: spin 2s linear infinite;
+}
+
+.loading:after {
+	width: 18px;
+	height: 18px;
+	top: calc(50% - 9px);
+	right: 16px;
+	
+	border-color: transparent #66adc3;
+	animation: spin 2s linear infinite reverse;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	
+	50% {
+		transform: rotate(180deg);
+	}
+		
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 .text.right {
